@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richard Owino Ndong | General Contractor</title>
+    <style>
+        /* Modern, Clean Construction Theme Styling */
+        :root {
+            --primary: #d97706; /* Construction Amber */
+            --primary-light: #f59e0b;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: white;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: var(--primary-light);
+            text-shadow: 0 2px 10px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #d97706 100%);
+            background-attachment: fixed;
+            color: white;
+            padding: 7rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(217, 119, 6, 0.15) 35px, rgba(217, 119, 6, 0.15) 70px);
+            pointer-events: none;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.1;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.5);
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 3px;
+        }
+
+        /* Project Grid (Responsive) */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--primary);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(217, 119, 6, 0.25);
+        }
+
+        @media (hover: none) {
+            .card:active {
+                transform: translateY(-8px) scale(1.01);
+                box-shadow: 0 15px 40px rgba(217, 119, 6, 0.2);
+            }
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .card-location {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-text {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .contact-section h2 {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-section p {
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+            font-size: 1.1rem;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(217, 119, 6, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            color: #cbd5e1;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            font-size: 0.95rem;
+            border-top: 4px solid var(--primary);
+        }
+        
+        footer p {
+            transition: color 0.3s ease;
+        }
+        
+        footer p:hover {
+            color: var(--primary-light);
+        }
+        
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-container {
+                justify-content: center;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .badge {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 2rem auto;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card {
+                border-top: 4px solid var(--primary);
+            }
+
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+
+            .contact-section {
+                padding: 2.5rem 1.5rem;
+                margin-top: 3rem;
+            }
+
+            .contact-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-section p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-btn {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+                width: 90%;
+                max-width: 300px;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+                margin-top: 4rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* EXTRA SMALL DEVICES - Phones in Portrait */
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+
+            .badge {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.65rem;
+            }
+
+            .hero {
+                padding: 3rem 0.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .container {
+                padding: 0 0.8rem;
+                margin: 1.5rem auto;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-title::after {
+                width: 60px;
+                height: 4px;
+            }
+
+            .card-body {
+                padding: 1.2rem;
+            }
+
+            .card-category {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .card-location {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .card-text {
+                font-size: 0.9rem;
+            }
+
+            .contact-section {
+                padding: 2rem 1rem;
+                margin-top: 2.5rem;
+                border-radius: 8px;
+            }
+
+            .contact-section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .contact-section p {
+                font-size: 0.9rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .contact-btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.95rem;
+                width: 85%;
+                margin-top: 0.8rem;
+            }
+
+            footer {
+                padding: 1.5rem 0.8rem;
+                margin-top: 3rem;
+                font-size: 0.8rem;
+            }
+
+            .hero::after {
+                width: 300px;
+                height: 300px;
+                top: -30%;
+                right: -20%;
+            }
+        }
+
+        /* LANDSCAPE TABLETS */
+        @media (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Mr. Richard <span>Owino Ndong</span></h1>
+            </div>
+            <div class="badge">General Contractor</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Reliable Construction & Infrastructure Services</h2>
+            <p>Based in Homa Bay County, delivering quality classrooms, sanitation structures, and security fencing across Homa Bay and Migori Counties.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <h2 class="section-title">Completed Work & Projects</h2>
+        <div class="project-grid" id="project-container">
+            <p style="text-align: center; grid-column: 1/-1;">Loading expert projects...</p>
+        </div>
+
+        <section class="contact-section">
+            <h2>Have a Project in South Nyanza?</h2>
+            <p>Reach out to Mr. Richard Owino Ndong for top-quality construction work, extensions, or structural fencing.</p>
+            <a href="tel:+254769633362" class="contact-btn">Call Now: 0769633362</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mr. Richard Owino Ndong. All Rights Reserved. Built for Homa Bay & Migori Contracting.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fetch the external CSV file
+            fetch('projects.csv')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Could not find projects.csv file");
+                    }
+                    return response.text();
+                })
+                .then(csvText => {
+                    parseAndDisplayCSV(csvText);
+                })
+                .catch(error => {
+                    console.error("Error loading CSV:", error);
+                    document.getElementById('project-container').innerHTML = 
+                        `<p style="color: red; text-align: center; grid-column: 1/-1;">Error loading data file. Please ensure projects.csv is uploaded.</p>`;
+                });
+        });
+
+        function parseAndDisplayCSV(text) {
+            const lines = text.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+            const container = document.getElementById('project-container');
+            container.innerHTML = ''; // Clear loading message
+
+            // Skip headers loop through the rest
+            for (let i = 1; i < lines.length; i++) {
+                // Quick CSV row parser that respects quotation marks for commas
+                const row = parseCSVRow(lines[i]);
+                
+                if (row.length >= 4) {
+                    const [title, location, category, description] = row;
+
+                    // Create the HTML structural element for the project card
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-body">
+                            <div class="card-category">${escapeHTML(category)}</div>
+                            <h3 class="card-title">${escapeHTML(title)}</h3>
+                            <div class="card-location">📍 ${escapeHTML(location)}</div>
+                            <p class="card-text">${escapeHTML(description)}</p>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                }
+            }
+        }
+
+        // Helper function to handle standard CSV split nuances safely
+        function parseCSVRow(text) {
+            let p = '', r = [];
+            let q = false;
+            for (let i = 0; i < text.length; i++) {
+                let c = text[i];
+                if (c === '"') { q = !q; }
+                else if (c === ',' && !q) { r.push(p); p = ''; }
+                else { p += c; }
+            }
+            r.push(p);
+            return r;
+        }
+
+        // Helper to prevent script injection vulnerabilities
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+    </script>
+</body>
+</html>
